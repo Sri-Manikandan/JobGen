@@ -26,12 +26,75 @@
             align-items: center;
             padding: 10px;
         }
+        /* The switch - the box around the slider */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 80px;
+            height: 50px;
+        }
+        
+        /* Hide default HTML checkbox */
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        /* The slider */
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 42px;
+            width: 42px;
+            left: 4px;
+            bottom: 4px;
+            background-color: black;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+        
+        input:checked + .slider {
+            background-color: white;
+        }
+        
+        input:focus + .slider {
+            box-shadow: 0 0 1px black;
+        }
+        
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+        
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+        
+        .slider.round:before {
+            border-radius: 50%;
+        }
     </style>
 </head>
 <body>
    <div class="navbar black" style="display: flex;justify-content: space-around;align-items: center;width: 100%;height: 100px;padding-top: 10px;">
-        <div class="nav-link" style="height: 50px; background-color: #8A2BE2;">
-            <p>LOGO</p>
+        <div class="nav-link" style="height: 80px; width:90px;background-color: #8A2BE2;display: flex;justify-content: center;align-items: center;flex-direction: column;padding: 5px;">
+            <img height="50px" width="50px" src="{% static 'bg/robot.png' %}">
+            <p style="margin: 0;font-weight: 600;font-size: larger;">JobGen</p>
         </div>
         <div class="nav-link">
             <p>ABOUT US</p>
@@ -46,17 +109,20 @@
             <p>LOGIN</p>
         </div>
    </div>
-   <div style="display: flex;justify-content: center;flex-direction: column;align-items: center;width: 100%;height: 600px;color: white;font-size: 30px;">
-        <div style="display: flex;justify-content: center;flex-direction: column;align-items: center;margin-top: -30px;">
+   <div style="display: flex;justify-content: center;flex-direction: column;align-items: center;width: 100%;height: 650px;color: white;font-size: 30px;">
+        <div style="display: flex;justify-content: center;flex-direction: column;align-items: center;margin-top: -60px;">
             <h1 style="margin: 5px;">Transforming Recruitment</h1>
             <h1 style="margin: 5px;">with AI</h1>
             <h1 style="margin: 5px;">and</h1>
             <h1 style="margin: 5px;">Custom Job Matching!!</h1>
         </div>
-        <p style="font-size: 20px;color: #8A2BE2;">Choose Your Role</p>
-        <div style="display: flex;justify-content: space-between;align-items: center;color: #0CC2E6;width: 400px;">
+        <p style="font-size: 20px;color: #8A2BE2;padding-top:10px;margin:0;font-weight: 600;font-size: 30px;">Choose Your Role!</p>
+        <div style="display: flex;justify-content: space-between;align-items: center;color: #0CC2E6;width: 350px;margin-top: 5px;height: 80px;">
             <h5>Recruiter</h5>
-
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label>
             <h5>Candidate</h5>
         </div>
    </div>
